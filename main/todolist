@@ -1,0 +1,20 @@
+model attribute
+1.deck -> model object
+2.youtube link -> URLField
+3.youtube title -> charfield
+4.front text -> TextField
+5.back text -> TextField
+6.front img -> imagefield
+7.back img ->imagefield
+8.state: new, review, learning, finished -> charfield 
+9.number of learned count -> PositiveSmallIntegerField
+10.youtube timestamp -> TimeField
+11.due date -> DateField
+
+model methods:
+input: deck + youtube pk
+output: list of card objects
+
+input: card pk, time_interval
+output: change the state of the card
+

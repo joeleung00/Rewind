@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rewind</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'main/home.css' %}">
+    </head>
+
+    <body>
+        <aside>
+            <div class="logo_div">
+                <img class="logo" src="{% static 'main/images/Big_icon.svg' %}" alt="Rewind Logo">
+            </div>
+            <div class="aside_btn">
+                <ul>
+                    <li><button>Add</button></li>
+                    <li><a href="{% url 'main:home' %}"><button>Decks</button></a></li>
+                    <li><button>Statistic</button></li>
+                </ul>
+            </div>
+
+            <div class="study_now_btn">
+                <button  type="button" name="study now">Study Now</button>
+            </div>
+        </aside>
+        <header>
+            
+        </header>
+        <main>
+            <div class="decks_table">
+                <table align="center">
+                    <thead>
+                        <tr>
+                            <th>Decks</th>
+                            <th>Due</th>
+                            <th>New</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in context %}
+                            <tr>
+                                <td><span><a href="{% url 'main:deck' item.0.id %}"><img src="{% static 'main/images/card_icon.svg' %}" alt="card icon">
+                                </span>{{ item.0.deck_name }}</a>
+                            </td>
+                                <td>{{ item.1.0}}</td>
+                                <td>{{ item.1.1}}</td>
+                            </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="create_btn">
+                <button>Create Deck</button>
+            </div>
+        </main>
+    </body>
+
+</html>

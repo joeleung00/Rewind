@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="162" height="137" viewBox="0 0 162 137">
+  <g id="Group_18" data-name="Group 18" transform="translate(-139 -40)">
+    <g id="Rectangle_6" data-name="Rectangle 6" transform="translate(159.151 40)" fill="#fd0a26" stroke="#707070" stroke-width="1">
+      <rect width="124.096" height="85.795" rx="17" stroke="none"/>
+      <rect x="0.5" y="0.5" width="123.096" height="84.795" rx="16.5" fill="none"/>
+    </g>
+    <text id="Rewind" transform="translate(220 167)" fill="#fd0a26" font-size="45" font-family="Arial-BoldMT, Arial" font-weight="700"><tspan x="-80.002" y="0">Rewind</tspan></text>
+    <text id="Y" transform="translate(220.52 98.204)" fill="#fff" font-size="44" font-family="Arial-BoldMT, Arial" font-weight="700"><tspan x="-14.674" y="0">Y</tspan></text>
+  </g>
+</svg>

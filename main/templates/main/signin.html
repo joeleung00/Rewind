@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rewind</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main/signin.css' %}">
+</head>
+
+<body style="background-image: url({% static 'main/images/bgi.jpg' %});">
+    <header>
+        <div>
+            <img class="logo" src="{% static 'main/images/Big_icon.svg' %}" alt="Rewind Logo">
+        </div>
+    </header>
+    <main>
+
+        <div class="Signin-box">
+
+            <h1>Sign In</h1>
+            <form action="/signin/" method="post">
+                {% csrf_token %}
+
+                {{ form }}
+
+                <input type="submit" class="btn" name="submit_btn" value="Sign In">
+
+                <p>No account? <a href="" >Sign up</a> now!</p>
+            </form>
+
+        </div>
+
+
+
+    </main>
+</body>
+
+
+</html>

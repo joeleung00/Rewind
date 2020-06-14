@@ -1,0 +1,158 @@
+body, html{
+    height: 100vh;
+}
+
+body {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 18% auto;
+    grid-template-rows: 8% auto;
+    grid-template-areas:
+        "sidebar header"
+        "sidebar main";
+}
+.logo_div {
+    text-align: center;
+}
+
+.logo {
+    width: 120px;
+    padding-top: 2em;
+    text-align: center;
+}
+
+
+aside {
+    grid-area: sidebar;
+    background-color: #2B2929;
+    position: relative;
+}
+
+header {
+    grid-area: header;
+}
+.back {
+    background: None;
+    border: 0;
+    margin-left: 3em;
+    margin-top: 1em;
+}
+.back img {
+    width: 3em;
+}
+
+main {
+    grid-area: main;
+    position: relative;
+}
+
+.aside_btn ul {
+    list-style-type: none;
+    margin-top: 2.5em;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.aside_btn li button{
+    background-color: #797575;
+    border: 0px;
+    color: white;
+    border-radius: 2em;
+    width: 70%;
+    height: 2.5em;
+    font-size: 1.5em;
+    margin-top: 2em;
+
+}
+
+.study_now_btn {
+    text-align: center;
+}
+
+.study_now_btn button {
+    background-color: #FD0A26;
+    color: #FFFFFF;
+    border-radius: 2em;
+    width:  80%;
+    height: 3em;
+    border: 0px;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 0;
+    margin-top: 40%;
+}
+
+table {
+    border-collapse: separate;
+    font-size: 1.2em;
+    width: 70%;
+}
+
+table tbody tr{
+    outline: 1px solid grey;
+}
+
+table thead tr {
+    text-align: left;
+}
+
+table td {
+    padding: 7px 5px;
+}
+
+table td:nth-child(1){
+    width: 80%;
+}
+
+table td:nth-child(2){
+    width: 4em;
+}
+
+table button {
+    background: None;
+    border: 0px;
+    font-size: 1em;
+}
+
+table img {
+    width: 1em;
+    margin-right: 0.7em;
+}
+
+.create_btn {
+    position: fixed;
+    bottom: 4em;
+    right: 4em;
+}
+
+.create_btn button {
+    border-radius: 2em;
+    background-color: #FD0A26;
+    color: white;
+    font-size: 1.5em;
+    border: 0px;
+    padding: 0.75em 1em;
+    font-weight: bold;
+
+}
+
+a:link {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:active {
+  text-decoration: none;
+  color: inherit;
+}

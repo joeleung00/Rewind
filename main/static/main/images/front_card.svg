@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="719" height="331" viewBox="0 0 719 331">
+  <g id="Group_20" data-name="Group 20" transform="translate(-627 -722)">
+    <g id="Rectangle_11" data-name="Rectangle 11" transform="translate(627 722)" fill="#f8f7f7" stroke="#707070" stroke-width="1">
+      <rect width="719" height="331" rx="43" stroke="none"/>
+      <rect x="0.5" y="0.5" width="718" height="330" rx="42.5" fill="none"/>
+    </g>
+    <text id="What_is_the_forgetting_curve_" data-name="What is the forgetting curve?" transform="translate(985 860)" fill="#030303" font-size="40" font-family="Arial-BoldMT, Arial" font-weight="700"><tspan x="-276.68" y="0">What is the forgetting curve?</tspan></text>
+    <g id="Ellipse_1" data-name="Ellipse 1" transform="translate(1262 761)" fill="#fff" stroke="#707070" stroke-width="1">
+      <ellipse cx="24.5" cy="24" rx="24.5" ry="24" stroke="none"/>
+      <ellipse cx="24.5" cy="24" rx="24" ry="23.5" fill="none"/>
+    </g>
+  </g>
+</svg>

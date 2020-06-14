@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rewind</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main/signup.css' %}">
+</head>
+
+<body style="background-image: url({% static 'main/images/bgi.jpg' %});">
+    <header>
+        <div>
+            <img class="logo" src="{% static 'main/images/Big_icon.svg' %}" alt="Rewind Logo">
+        </div>
+    </header>
+    <main>
+        <div class="Signin-box">
+            <form action="/signup/" method="post">
+                <h1>Sign Up</h1>
+                {% csrf_token %}
+                <div class="error">{{ form.non_field_errors}}</div>
+                <label for="{{ form.username.id_for_label }}">Username:</label><br>
+                {{ form.username }}<br>
+                <div class="help_text">{{ form.username.help_text }}</div><br>
+                <div class="error">{{ form.username.errors }}</div><br>
+
+                <label for="{{ form.password1.id_for_label }}">Password:</label><br>
+                {{ form.password1 }}<br>
+                {{ form.password1.help_text }}<br>
+                <div class="error">{{ form.password1.errors }}</div><br>
+
+                <label for="{{ form.password2.id_for_label }}">Comfirm Password:</label><br>
+                {{ form.password2 }}<br>
+                <div div class="help_text">{{ form.password2.help_text }}</div><br>
+                <div class="error">{{ form.password2.errors }}</div><br>
+
+                <input type="submit" class="btn" name="submit_btn" value="Sign Up">
+            </form>
+        </div>
+
+    </main>
+</body>
+
+
+</html>

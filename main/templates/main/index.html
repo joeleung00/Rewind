@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rewind</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'main/index.css' %}">
+
+</head>
+
+<body style="background-image: url({% static 'main/images/bgi.jpg' %});">
+    <header>
+        <div>
+            <img class="logo" src="{% static 'main/images/Big_icon.svg' %}" alt="Rewind Logo">
+        </div>
+        <div>
+            <ul>
+                <li><a href="{% url 'main:signin' %}">Sign In</a></li>
+                <li><a href="{% url 'main:signup' %}">Sign Up</a></li>
+            </ul>
+        </div>
+    </header>
+    <main>
+
+        <h1>Rewind</h1>
+        <p>A learning tool that help you make flash card for Youtube video. You will never forget what you have learned in Youtube. Inspired by Anki.</p>
+        <div>
+            <img class="youtube_icon" src="{% static 'main/images/youtube_icon.svg' %}" alt="youtube icon">
+        </div>
+
+        <div class="card_container">
+            <div class="card">
+                <div class="front_card">
+                    <img  src="{% static 'main/images/front_card.svg' %}" alt="front card">
+                </div>
+                <div class="back_card">
+                    <img  src="{% static 'main/images/backcard.svg' %}" alt="back card">
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>

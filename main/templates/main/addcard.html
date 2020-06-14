@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rewind</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'main/addcard.css' %}">
+    </head>
+
+    <body>
+        <aside>
+            <div class="logo_div">
+                <img class="logo" src="{% static 'main/images/Big_icon.svg' %}" alt="Rewind Logo">
+            </div>
+            <div class="aside_btn">
+                <ul>
+                    <li><button>Add</button></li>
+                    <li><button>Decks</button></li>
+                    <li><button>Statistic</button></li>
+                </ul>
+            </div>
+
+        </aside>
+        <header>
+            <button class="back"><img src="{% static 'main/images/back.svg' %}" alt="back to previous"></button>
+        </header>
+        <main>
+            <div class="search">
+                <form action="/youtube_learning/", method="POST">
+                    {% csrf_token %}
+                    <label for="{{ form.search_bar.id_for_label }}" >Video Learning:</label>
+                    <img src="{% static 'main/images/search_icon.svg' %}">
+                    {{ form.search_bar }}
+                    <input id="search_bar" placeholder="www.youbute.com">
+                    {{ form.search_bar.error }}
+                    <button type="submit"></button>
+                
+                </form>
+                
+            </div>
+
+            <div class="middle_content">
+
+                <div class="card">
+                    <label for="front">Front</label><br>
+                    <textarea id="front" rows="8" cols="60" name="front">aaaa</textarea><br>
+
+
+                    <label for="back">Back</label><br>
+                    <textarea id="back" rows="8" cols="60" name="back">eeee</textarea><br>
+                </div>
+
+            </div>
+            <div class="deck">
+                <select id="decks" name="decks">
+                    <option value="deck1">deck1</option>
+                    <option value="deck2">deck2</option>
+                </select>
+
+            </div>
+        </main>
+    </body>
+
+</html>

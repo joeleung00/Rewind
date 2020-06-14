@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rewind</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'main/deck.css' %}">
+    </head>
+
+    <body>
+        <aside>
+            <div class="logo_div">
+                <img class="logo" src="{% static 'main/images/Big_icon.svg' %}" alt="Rewind Logo">
+            </div>
+            <div class="aside_btn">
+                <ul>
+                    <li><button>Add</button></li>
+                    <li><a href="{% url 'main:home' %}"><button>Decks</button></a></li>
+                    <li><button>Statistic</button></li>
+                </ul>
+            </div>
+
+            <div class="study_now_btn">
+                <button  type="button" name="study now">Study Now</button>
+            </div>
+        </aside>
+        <header>
+            <a href="{% url 'main:home' %}"class="back"><img src="{% static 'main/images/back.svg' %}" alt="back to previous"></a>
+        </header>
+        <main>
+            <div class="decks_table">
+                <table align="center">
+                    <thead>
+                        <tr>
+                            <th>Video</th>
+                            <th>Due</th>
+                            <th>New</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in context %}
+                            <tr>
+                                <td><a href="{% url 'main:index' %}video/{{ item.0.id }}">
+                                    <span><img src="{% static 'main/images/video_icon.svg' %}" alt="card icon"></span>
+                                    {{ item.0.youtube_title }}</a></td>
+                                <td>{{ item.1 }}</td>
+                                <td>{{ item.2 }}</td>
+                            </tr>
+                        {% endfor %}
+                       
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </body>
+
+</html>

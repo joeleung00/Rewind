@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    background-image: url("../images/bgi.jpg");
+    font-family: "Arial";
+}
+
+
+main {
+    text-align: center;
+}
+
+.logo {
+    width: 120px;
+    padding-left: 6em;
+    padding-top: 2em;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Signin-box {
+    color: white;
+    background-color: #1A1919;
+    border: 6px solid #1A1919;
+    margin: 3em 30%;
+    text-align: left;
+}
+
+
+#id_password1, #id_username, #id_password2 {
+    width: 50%;
+    margin: 10px 10px;
+    background-color: #4E4949;
+    height: 2.5em;
+    font-size: 1em;
+    text-align: left;
+    padding-left: 1em;
+    margin-left: 2.5em;
+}
+
+label{
+    display: inline-block;
+	text-align: left;
+
+    font-weight: bold;
+    margin-left: 2.5em;
+    font-size: 1.3em;
+}
+
+.Signin-box ul {
+    list-style-type: none;
+    text-align: left;
+    color: grey;
+}
+.help_text {
+    margin-left: 2.5em;
+    color: grey;
+}
+
+.error li{
+    color: red;
+}
+
+h1 {
+    margin-left: 1em;
+}
+
+#id_password1::placeholder {
+    content: "Password";
+}
+
+.btn {
+    background-color: #FD0A26;
+    color: #FFFFFF;
+    border-radius: 2em;
+    width:  10em;
+    height: 3em;
+    border: 0px;
+    font-size: 1em;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    margin-left: 38%;
+}

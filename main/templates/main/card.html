@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rewind</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'main/card.css' %}">
+    </head>
+
+    <body>
+        <aside>
+            <div class="logo_div">
+                <img class="logo" src="{% static 'main/images/Big_icon.svg' %}" alt="Rewind Logo">
+            </div>
+            <div class="aside_btn">
+                <ul>
+                    <li><button>Add</button></li>
+                    <li><a href="{% url 'main:home' %}"><button>Decks</button></a></li>
+                    <li><button>Statistic</button></li>
+                </ul>
+            </div>
+
+        </aside>
+        <header>
+            <a class="back" href="{% url 'main:index' %}video/{{ card.youtube.id }}" ><img src="{% static 'main/images/back.svg' %}" alt="back to previous"></a>
+        </header>
+        <main>
+            <div class="Title">
+                <p>Youtube Link: <a href="{{ card.youtube.youtube_link }}" >{{ card.youtube.youtube_link }}</a></p>
+                <p>Title: {{ card.youtube.youtube_title }}</p>
+            </div>
+
+            <div class="middle_content">
+                <div class="previous">
+                    <a href="" ><img src="{% static 'main/images/previous.svg' %}"></a>
+                </div>
+                <div class="card">
+                    <label for="front">Front</label><br>
+                    <textarea readonly="readonly" id="front" rows="8" cols="60" name="front">{{ card.front_text }}</textarea><br>
+
+
+                    <label for="back">Back</label><br>
+                    <textarea readonly="readonly" id="back" rows="8" cols="60" name="back">{{ card.back_text }}</textarea><br>
+                </div>
+                <div class="next">
+                    <a href="" ><img src="{% static 'main/images/next.svg' %}"></a>
+                </div>
+            </div>
+            <div class="deck">
+                <p>{{ card.deck.deck_name}}</p>
+
+            </div>
+        </main>
+    </body>
+
+</html>
