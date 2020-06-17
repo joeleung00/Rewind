@@ -11,7 +11,11 @@
 <body style="background-image: url({% static 'main/images/bgi.jpg' %});">
     <header>
         <div>
-            <img class="logo" src="{% static 'main/images/Big_icon.svg' %}" alt="Rewind Logo">
+            {% if user.is_authenticated %}
+                <a href="{% url 'main:home' %}"><img class="logo" src="{% static 'main/images/Big_icon.svg' %}" alt="Rewind Logo"></a>
+            {% else %}
+                <a href="{% url 'main:index' %}"><img class="logo" src="{% static 'main/images/Big_icon.svg' %}" alt="Rewind Logo"></a>
+            {% endif %}
         </div>
     </header>
     <main>

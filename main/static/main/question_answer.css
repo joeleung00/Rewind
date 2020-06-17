@@ -31,19 +31,11 @@ aside {
 header {
     grid-area: header;
 }
-.back {
-    background: None;
-    border: 0;
-    margin-left: 3em;
-    margin-top: 1em;
-}
-.back img {
-    width: 3em;
-}
 
 main {
     grid-area: main;
     position: relative;
+    text-align: center;
 }
 
 .aside_btn ul {
@@ -66,69 +58,69 @@ main {
 
 }
 
-
-main {
+.study_now_btn {
     text-align: center;
 }
 
-.previous img{
+.back {
+    background: None;
+    border: 0;
     margin-left: 3em;
-    margin-top: 10em;
+    margin-top: 1em;
+}
+.back img {
     width: 3em;
 }
 
-
-.next img {
-    margin-right: 3em;
-    margin-top: 10em;
-    width: 3em;
-}
-
-.card label{
-    color: #FD0A26;
-    font-weight: bold;
-}
-.card textarea {
-    border: 1px solid #FD0A26;
+.front_text {
     font-size: 1.5em;
 }
 
-.deck {
-    text-align: left;
-    margin-left: 10em;
+.show_answer_btn button {
+    background-color: #FD0A26;
+    border: 0px;
+    color: white;
+    border-radius: 2em;
+    width: 20%;
+    height: 2.5em;
+    font-size: 1.5em;
+    margin-top: 2em;
 }
 
+.back_text {
+    font-size: 1.5em;
+    margin-bottom: 2em;
+}
 
-.deck select {
-    margin-top: 1.5em;
+.time_btn {
+    bottom: 3em;
+    position: fixed;
+    width: 80%;
+}
+
+.time_btn table {
+    text-align: center;
+}
+
+.time_btn th {
+    padding: 0em 3em;
+}
+
+.time_btn td button{
+    border-radius: 2em;
+    background-color: #4FF7F7;
+    color: black;
+    font-size: 1em;
+    border: 0px;
+    padding: 0.5em 1.5em;
+}
+
+.watch_video_btn button{
     border-radius: 2em;
     background-color: #FD0A26;
     color: white;
     font-size: 1em;
-    border: 1px solid #FD0A26;
-    padding: 0.5em 1em;
-    text-align: center;
-}
-.search {
-    position: relative;
-    top: 30%;
-}
-.search img {
-    position: absolute;
-    width: 1.3em;
-    margin-left: 1em;
-    margin-top: 0.25em;
-}
-
-.search input{
-    width: 60%;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    border: 1px solid grey;
-    margin-left: 1em;
-    padding-left: 2.2em;
-}
-
-.search button{
-    visibility: hidden;
+    border: 0px;
+    margin-top: 3em;
+    padding: 1em 2em;
 }

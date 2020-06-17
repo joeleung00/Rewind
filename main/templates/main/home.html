@@ -11,24 +11,32 @@
     <body>
         <aside>
             <div class="logo_div">
-                <img class="logo" src="{% static 'main/images/Big_icon.svg' %}" alt="Rewind Logo">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'main:home' %}"><img class="logo" src="{% static 'main/images/Big_icon.svg' %}" alt="Rewind Logo"></a>
+                {% else %}
+                    <a href="{% url 'main:index' %}"><img class="logo" src="{% static 'main/images/Big_icon.svg' %}" alt="Rewind Logo"></a>
+                {% endif %}
             </div>
             <div class="aside_btn">
                 <ul>
-                    <li><button>Add</button></li>
+                    <li><a href="{% url 'main:addcard' %}"><button>Add</button></a></li>
                     <li><a href="{% url 'main:home' %}"><button>Decks</button></a></li>
                     <li><button>Statistic</button></li>
                 </ul>
             </div>
 
-            <div class="study_now_btn">
-                <button  type="button" name="study now">Study Now</button>
-            </div>
         </aside>
         <header>
-            
+
         </header>
         <main>
+            <div style="display:none;visibility:hidden;">
+                <form id="deck_form" method='post'>
+                    {% csrf_token %}
+                    {{ form.deck_name }}
+                </form>
+            </div>
+            <p>{{ form.deck_name.errors }}</p>
             <div class="decks_table">
                 <table align="center">
                     <thead>
@@ -53,9 +61,19 @@
                 </table>
             </div>
             <div class="create_btn">
-                <button>Create Deck</button>
+                <button onclick="create_deck()">Create Deck</button>
             </div>
         </main>
     </body>
+    <script>
+    function create_deck() {
+        var deck_name = prompt("Please enter your deck name:");
+        if (deck_name != null && deck_name != "") {
+            document.getElementById("id_deck_name").value = deck_name;
+            document.getElementById("deck_form").submit();
+        }
+
+    }
+    </script>
 
 </html>

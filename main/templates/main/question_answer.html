@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rewind</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'main/question_answer.css' %}">
+    </head>
+
+    <body>
+        <aside>
+            <div class="logo_div">
+                <img class="logo" src="{% static 'main/images/Big_icon.svg' %}" alt="Rewind Logo">
+            </div>
+            <div class="aside_btn">
+                <ul>
+                    <li><a href="{% url 'main:addcard' %}"><button>Add</button></a></li>
+                    <li><a href="{% url 'main:home' %}"><button>Decks</button></a></li>
+                    <li><button>Statistic</button></li>
+                </ul>
+            </div>
+
+        </aside>
+        <header>
+            <a href="{{ back_url }}"><button class="back"><img src="{% static 'main/images/back.svg' %}" alt="back to previous"></button></a>
+        </header>
+        <main>
+            <div class="front_text">
+                <p>{{ card.front_text }}<p>
+            </div>
+            <hr>
+
+            <div class="show_answer_btn">
+                <button type="button" onclick="show_answer()">Show Answer</button>
+            </div>
+
+            <div id="answer" style="visibility:hidden;">
+                <div class="back_text">
+                    <p>{{ card.back_text }}<p>
+                </div>
+
+                <div class="back_img">
+                </div>
+
+                <div class="watch_video_btn">
+                    <a target=”_blank” href="{{ youtube_link }}"><button>Watch Video</button></a>
+                </div>
+
+                <div class="time_btn">
+                    <table align="center">
+                        <thead>
+                            <tr>
+                                {% for answer in answers %}
+                                    <th>{{ answer.0 }}</th>
+                                {%  endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {% for answer in answers %}
+                                    <td><button onclick="submit_form(this)" value="{{ answer.0 }}">{{ answer.1 }}</button></td>
+                                {% endfor %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        <div style="display:none;visibility:hidden">
+            <form action="{{ request.get_full_path }}" method="post" id="form">
+                {% csrf_token %}
+                {{ form }}
+            </form>
+        </div>
+        </main>
+    </body>
+    <script>
+    function show_answer(){
+        document.getElementsByClassName("show_answer_btn")[0].style.visibility = "hidden";
+        document.getElementsByClassName("show_answer_btn")[0].style.display = "none";
+        document.getElementById("answer").style.visibility = "visible";
+    }
+    function submit_form(btn){
+        document.getElementById("id_answer").value = btn.value;
+        document.getElementById("form").submit();
+    }
+
+
+    </script>
+
+</html>

@@ -11,18 +11,22 @@
     <body>
         <aside>
             <div class="logo_div">
-                <img class="logo" src="{% static 'main/images/Big_icon.svg' %}" alt="Rewind Logo">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'main:home' %}"><img class="logo" src="{% static 'main/images/Big_icon.svg' %}" alt="Rewind Logo"></a>
+                {% else %}
+                    <a href="{% url 'main:index' %}"><img class="logo" src="{% static 'main/images/Big_icon.svg' %}" alt="Rewind Logo"></a>
+                {% endif %}
             </div>
             <div class="aside_btn">
                 <ul>
-                    <li><button>Add</button></li>
+                    <li><a href="{% url 'main:addcard' %}"><button>Add</button></a></li>
                     <li><a href="{% url 'main:home' %}"><button>Decks</button></a></li>
                     <li><button>Statistic</button></li>
                 </ul>
             </div>
 
             <div class="study_now_btn">
-                <button  type="button" name="study now">Study Now</button>
+                <a href="/review/deck/{{ pk }}/"><button  type="button" name="study now">Study Now</button></a>
             </div>
         </aside>
         <header>
@@ -48,7 +52,7 @@
                                 <td>{{ item.2 }}</td>
                             </tr>
                         {% endfor %}
-                       
+
                     </tbody>
                 </table>
             </div>

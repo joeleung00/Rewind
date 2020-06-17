@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rewind</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'main/youtube_learning.css' %}">
+    </head>
+
+    <body>
+        <aside>
+            <div>
+                <iframe id="youtube-video" width="560" height="315" src="{{ embed_link }}?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+        </aside>
+        <header>
+            <a href="{% url 'main:addcard' %}"><button class="back"><img src="{% static 'main/images/back.svg' %}" alt="back to previous"></button></a>
+        </header>
+        <main>
+            <div class="Title">
+                <p>Youtube Link: {{ youtube_form.youtube_link.value }}</p>
+                <p>Title: <span id="youtube-title"></span></p>
+                <div id="success_msg"></div>
+            </div>
+            <form action="/youtube_learning/" method="post" id="addcard-form">
+                {% csrf_token %}
+                <div class="hidden-input">
+                    {{ youtube_form.youtube_link }}
+                    {{ youtube_form.youtube_title }}
+                </div>
+
+                <div class="middle_content">
+                    <div class="screenshot">
+                        <button type="button"><img src="{% static 'main/images/screenshot_icon.svg' %}"></button>
+                    </div>
+                    <div class="card">
+                        <label for="front">Front</label><br>
+                        <!--<textarea id="front" rows="8" cols="60" name="front"></textarea><br>-->
+                        {{ card_form.front_text }}<br>
+                        <label for="back">Back</label><br>
+                        {{ card_form.back_text }}<br>
+                        <!--<textarea id="back" rows="8" cols="60" name="back"></textarea><br>-->
+                    </div>
+
+                </div>
+                <div class="timestamp">
+                    <div>
+                        <p>timestamp: <span id="current-time">00:00:00</span></p>
+                        <div class="hidden-input">
+                            {{ card_form.youtube_timestamp }}
+                        </div>
+                    </div>
+                    <div>
+                        <button type="button" onclick = "get_time()" >Current Video Time</button>
+                    </div>
+                </div>
+
+                <div class="deck">
+                    <select id="id_deck" name="deck">
+                        {% for deck in card_form.deck %}
+                            {{ deck }}
+                         {% endfor %}
+
+                    </select>
+                    {{ card_form.deck.errors }}
+                </div>
+
+                <div class="add">
+                    <button type="submit">ADD</button>
+                </div>
+            </form>
+        </main>
+
+    </body>
+    <script type="text/jscript" src="{% static 'main/js/jquery.min.js' %}"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="{% static 'main/js/main.js' %}"></script>
+
+    <script type="text/javascript">
+
+    function delete_success_msg(){
+        var element = document.getElementById("success_msg");
+        element.innerHTML = '';
+    }
+
+    function show_success_msg(msg){
+        var tag = document.createElement("p");
+        var text = document.createTextNode(msg);
+        tag.appendChild(text);
+        var element = document.getElementById("success_msg");
+        element.append(tag);
+
+        setTimeout(delete_success_msg, 2500);
+    }
+
+    function create_card() {
+
+        console.log("create post is working!") // sanity check
+        $.ajax({
+            url: '/youtube_learning/',
+            type: 'POST',
+            data: {
+                youtube_link: $('#id_youtube_link').val(),
+                youtube_title: $('#id_youtube_title').val(),
+                front_text: $('#id_front_text').val(),
+                back_text: $('#id_back_text').val(),
+                youtube_timestamp: $('#id_youtube_timestamp').val(),
+                deck: $('#id_deck').val()
+            },
+            success: function(json){
+                $('#id_front_text').val('');
+                $('#id_back_text').val('');
+                let msg = "successfuly add card";
+                show_success_msg(msg);
+
+            },
+
+            error: function(json){
+                let msg = "fail to add card";
+                show_success_msg(msg);
+            }
+        });
+    }
+
+        $(document).on('submit', "#addcard-form", function(event){
+            event.preventDefault();
+            create_card();
+        });
+    </script>
+
+    <script>
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('youtube-video', {
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange,
+        }
+      });
+    }
+
+
+
+    function onPlayerReady() {
+        console.log("hey Im ready");
+        var title = player.getVideoData().title;
+        document.getElementById("youtube-title").innerHTML = title;
+        document.getElementById("id_youtube_title").value = title;
+        document.getElementById("id_youtube_timestamp").value = "00:00:00";
+    }
+
+    function onPlayerStateChange() {
+        console.log("my state changed");
+    }
+
+    function get_time() {
+        let time = player.getCurrentTime();
+        let hour = Math.floor(time / 3600);
+        let min = Math.floor((time % 3600) / 60);
+        let sec = Math.floor((time % 3600 % 60));
+        let time_string = hour.toString().padStart(2, '0') + ":" + min.toString().padStart(2, '0')  + ":" + sec.toString().padStart(2, '0');
+        var element = document.getElementById("current-time");
+        element.innerHTML = time_string;
+        document.getElementById("id_youtube_timestamp").value = time_string;
+    }
+
+
+    </script>
+
+
+</html>
