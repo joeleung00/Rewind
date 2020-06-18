@@ -37,6 +37,7 @@ class Deck(models.Model):
 		return self.deck_name
 
 class Youtube(models.Model):
+	deck = models.ForeignKey(Deck, on_delete=models.CASCADE)
 	youtube_link = models.URLField()
 	youtube_title = models.CharField(max_length=150)
 

@@ -18,6 +18,7 @@ def index(request):
 	return render(request, 'main/index.html', {})
 
 
+
 def signin(request):
 	if request.method == 'POST':
 		form = SigninForm(request.POST)
@@ -118,6 +119,8 @@ def get_embed_link(url):
 		chopped_url = url
 	return re.sub("watch\?v=", "embed/", chopped_url), chopped_url
 
+
+
 def init_card(card_form, youtube):
 	value_dict = {'state': "N", 'finished_count': 0, 'due_time': datetime.now(), 'youtube': youtube}
 	for key, value in card_form.cleaned_data.items():
@@ -135,7 +138,14 @@ def youtube_learning(request):
 		youtube_form = YoutubeForm(request.POST)
 		if youtube_form.is_valid():
 			if card_form.is_valid():
-				youtube = youtube_form.save()
+				deck_id = card_form.cleaned_data['deck'][0]
+				youtube_list = Deck.objects.get(pk=deck_id).youtube_set.all()
+				youtube_link = youtube_form.cleaned_data["youtube_link"]
+				youtube_list = youtube_list.filter(youtube_link=youtube_link)
+				if len(youtube_list) != 0:
+					youtube = youtube_list[0]
+				else:
+					youtube = youtube_form.save()
 				card = init_card(card_form, youtube)
 				card.save()
 				return JsonResponse({'success': True});
